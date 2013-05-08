@@ -1,0 +1,18 @@
+import os
+
+env = Environment(ENV=os.environ,
+                  CXX='g++',
+                  CXXFLAGS=' '.join([
+                      '-Wall -Wextra -Werror',
+                      '-Wconversion -Wshadow',
+                      '-std=c++11 -pedantic',
+                      '-g -DDEBUG',
+                      '--coverage',
+                  ]),
+                  CPPPATH=['..'],
+                  LIBS=['gtest', 'gmock', 'gtest_main', 'gcov', 'pthread'])
+
+build = env.Program('gtest', Glob('*.cc'))
+test  = env.Command('test', build, './$SOURCE')
+
+Return('test')
