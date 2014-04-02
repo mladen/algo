@@ -1,15 +1,15 @@
 language: cpp
 script: scons
 before_install:
- - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
- - sudo apt-get -qq update
- - sudo apt-get -qq install g++-4.8
- - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
- - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
- - svn checkout http://googlemock.googlecode.com/svn/trunk/ gmock
- - cd gmock
- - cmake CMakeLists.txt
- - make
- - sudo mv *.a gtest/*.a /usr/local/lib/
- - sudo cp -r include/gmock/ gtest/include/gtest/ /usr/local/include/
- - cd -
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install g++-4.8
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+  - svn checkout http://googlemock.googlecode.com/svn/trunk/ gmock
+  - cd gmock
+  - cmake CMakeLists.txt
+  - make
+  - sudo mv *.a gtest/*.a /usr/local/lib/
+  - sudo cp -r include/gmock/ gtest/include/gtest/ /usr/local/include/
+  - cd -
